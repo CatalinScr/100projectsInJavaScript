@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning JavaScript every day with a new project 1/100</title>
+</head>
+<style>
+	body {
+		max-width: 1200px;
+		display: block;
+		margin: 0 auto;
+		
+	}
+	.header {
+		color: #0288D1;
+
+	}
+	form {
+		color: #212121;
+	}
+	#valueSearch {
+		width: 300px;
+	}
+
+	footer {
+		margin-top: 25%;
+		text-align: center;
+		color: #757575;
+	}
+</style>
+<body>
+<h1 class="header">This aplication is searching the longest word from a phrase that you enter and the length of the word.</h1>
+<p ></p>
+<form class="center">
+	<label>
+		Enter the string that you want to search the bigest word.<br>
+	</label>
+	<input type="text" name="text" id="valueSearch">
+	<input type="submit" value="Find" id="submit" >
+</form>
+<p id="response"></p>
+<footer>
+	© Copyright Catalin Scripcariu 
+</footer>
+
+<script type="text/javascript">
+document.getElementById("submit").addEventListener("click", function(event){
+	event.preventDefault();
+	var str=document.getElementById("valueSearch").value;
+	var answer=findLongestWord(str);
+	document.getElementById("response").innerHTML = "<p> You have entered the phrase: "+str +" <br> The bigest word is: " + answer+" and has length " + answer.length + "!"; 
+
+})
+// the function is searching the longest word in the phrase and is returning the value
+function findLongestWord(str){
+ var strSplit=str.split(" ");
+ var word="";
+for(var i=0; i<strSplit.length; i++){
+		if( strSplit[i].length > word.length  ) {
+			word=strSplit[i];
+		}
+	}
+return word; 	
+} // /findLongestWord
+
+
+</script>
+</body>
+</html>
