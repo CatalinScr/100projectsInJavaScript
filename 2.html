@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Learning JavaScript every day with a new project 2/100</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style type="text/css">
+			ul {
+				list-style: none;
+			}
+			.fa-times {
+				margin-left: 30px;
+			}
+			.done::before {
+				content: "-"
+			}
+		</style>
+	</head>
+	<body>
+		<h1>This is a To Do app</h1>
+		<form action="">
+			<input type="text" id="taskval">
+			<input type="submit" value="ADD" id="submit">
+		</form>
+		<ul id="response" class="items"></ul>
+		<script>
+			// creates the list with things to do and a delete botton for each 
+			document.getElementById('submit').onclick = function(event){
+				event.preventDefault();
+				var inputTask=document.getElementById("taskval");
+				var location=document.getElementById("response");
+				var li = document.createElement("li");
+				li.className="tasks";
+				var t = document.createTextNode(inputTask.value);
+				li.appendChild(t);
+				document.getElementById("response").appendChild(li);
+				var i = document.createElement("i");
+				i.className ="fa fa-times";
+				li.appendChild(i);
+				inputTask.value ="";
+				var delElem = document.getElementsByClassName("fa-times");
+				// click on a button to delete it from list
+				for( var i=0; i<delElem.length; i++){
+					 delElem[i].onclick = function (){
+					 	var div = this.parentElement;
+					 	div.innerHTML = "";
+					 }
+				}
+				//click on task markes it as done
+				var conElem = document.getElementsByClassName("tasks");
+				for ( var j=0; j< conElem.length; j++){
+					conElem[j].onclick = function (){
+						var addDone = this.parentElement;
+						addDone.style.class = "done";
+					};
+				}
+
+			};
+
+		</script>
+
+	</body>
+</html>
