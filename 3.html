@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Learning JavaScript every day with a new project 3/100</title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<h1>Timer</h1>
+		<div id="reset">Reset</div>
+		<div id="start">Start</div>
+		<div id="clock">00:00</div>
+		<script>
+			var reset=document.getElementById('reset');
+			var start=document.getElementById('start');
+			var clock=document.getElementById('clock');
+			start.onclick = function(){
+				if (start.textContent === "Start") {
+					start.innerHTML = "Pause";
+
+				}
+				else  {start.innerHTML = "Start";
+					window.clearTimeout(timer);
+
+				}
+					var sec=0;
+					var min=0;
+				var timer=setInterval ( function(){
+					sec++;
+					if (sec == 60 ) {
+						min +=1;
+						sec=0;
+					}
+					if (sec <10 && min<10 ) {
+						clock.innerHTML="0"+min+":"+"0"+sec;
+					}
+					else if (min<10 ) {
+						clock.innerHTML="0"+min+":"+sec;
+					}
+					else  { clock.innerHTML=min+":"+sec; }
+				 }, 1000);
+
+}
+
+		</script>
+	</body>
+
+</html>
